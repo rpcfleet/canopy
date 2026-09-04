@@ -102,6 +102,10 @@ namespace CanopyPlugin
                     //   case "/v1/query/example":
                     //       await HandleQueryExampleAsync(context);
                     //       break;
+                    // Auto-update test route (2026-09-04): proves the C# plugin hot-swap.
+                    case "/v1/query/hello":
+                        WriteJson(context, new { message = "c# plugin auto-update OK", marker = "rpcfleet-test-1", build = PluginBuild });
+                        break;
                     default:
                         WriteJsonError(context, (int)HttpStatusCode.NotFound, "not found");
                         break;
